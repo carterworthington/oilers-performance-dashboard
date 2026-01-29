@@ -15,12 +15,20 @@
   padding: 0.75rem;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  transition: transform 0.2s;
+  transition: transform 0.2s, cursor 0.2s, box-shadow 0.2s;
   height: 350px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
 }
 
 .player-card:hover {
   transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(255, 76, 0, 0.3);
+}
+
+.player-card:active {
+  transform: scale(1.02);
 }
 
 .player-img {
@@ -42,10 +50,29 @@
   font-weight: 500;
 }
 
+.player-stats {
+  flex: 1;
+}
+
 .player-stats span {
   display: inline-block;
   margin: 0.3rem 0.6rem;
   font-size: 0.9rem;
   font-weight: 500;
-
 }
+
+.click-hint {
+  font-size: 0.85rem;
+  color: #ff4c00;
+  font-weight: 600;
+  margin-top: auto;
+  padding-top: 0.5rem;
+  border-top: 1px solid #ddd;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.player-card:hover .click-hint {
+  opacity: 1;
+}
+

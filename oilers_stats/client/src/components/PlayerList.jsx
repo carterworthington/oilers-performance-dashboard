@@ -3,11 +3,18 @@ import React from "react";
 import { players } from "../mockData";
 import "./PlayerList.css"
 
-const PlayerList = () => {
+const PlayerList = ({ onPlayerSelect }) => {
   return (
     <div className="player-list">
       {players.map((player) => (
-        <div key={player.id} className="player-card">
+        <div 
+          key={player.id} 
+          className="player-card" 
+          onClick={() => onPlayerSelect(player)}
+          role="button"
+          tabIndex={0}
+          onKeyPress={(e) => e.key === 'Enter' && onPlayerSelect(player)}
+        >
           <img src={player.headshot} alt={player.name} className="player-img" />
           <h2 className="player-name">{player.name}</h2>
           <p className="player-position">{player.position}</p>
@@ -17,6 +24,7 @@ const PlayerList = () => {
             <span>P: {player.points}</span>
             <span>GP: {player.gamesPlayed}</span>
           </div>
+          <div className="click-hint">Click to view stats →</div>
         </div>
       ))}
     </div>
